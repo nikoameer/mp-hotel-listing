@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Typography from '@material-ui/core/Typography';
+import About from './pages/About.js'
+import Hotels from './pages/Hotels.js';
+import Layout from './components/Layout.js';
 
-function App() {
+/*
+**  Using Router to bulit in nested route and swtich between two paths Hotels & About component.
+*/
+function App () {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Layout>
+        <Switch>
+          <Route exact path="/">
+            <Hotels />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+        </Switch>
+      </Layout>
+    </Router>
   );
 }
 
